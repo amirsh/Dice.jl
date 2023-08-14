@@ -1,0 +1,58 @@
+=== Performing test "sum" ===
+Template bwh.jl
+Running n=5
+stdout: b'31.0\n' ;;; stderr: b'9.36\n'
+stdout: b'31.0\n' ;;; stderr: b'9.16\n'
+stdout: b'31.0\n' ;;; stderr: b'9.06\n'
+stdout: b'31.0\n' ;;; stderr: b'8.99\n'
+stdout: b'31.0\n' ;;; stderr: b'9.16\n'
+Running n=6
+stdout: b'63.00000000000001\n' ;;; stderr: b'9.33\n'
+stdout: b'63.00000000000001\n' ;;; stderr: b'9.15\n'
+stdout: b'63.00000000000001\n' ;;; stderr: b'9.20\n'
+stdout: b'63.00000000000001\n' ;;; stderr: b'9.38\n'
+stdout: b'63.00000000000001\n' ;;; stderr: b'9.04\n'
+Running n=7
+stdout: b'127.00000000000003\n' ;;; stderr: b'9.08\n'
+stdout: b'127.00000000000003\n' ;;; stderr: b'9.01\n'
+stdout: b'127.00000000000003\n' ;;; stderr: b'9.12\n'
+stdout: b'127.00000000000003\n' ;;; stderr: b'9.05\n'
+stdout: b'127.00000000000003\n' ;;; stderr: b'9.14\n'
+Running n=8
+stdout: b'255.00000000000006\n' ;;; stderr: b'9.18\n'
+stdout: b'255.00000000000006\n' ;;; stderr: b'9.08\n'
+stdout: b'255.00000000000006\n' ;;; stderr: b'9.22\n'
+stdout: b'255.00000000000006\n' ;;; stderr: b'9.11\n'
+stdout: b'255.00000000000006\n' ;;; stderr: b'9.22\n'
+Running n=9
+stdout: b'511.0000000000001\n' ;;; stderr: b'9.30\n'
+stdout: b'511.0000000000001\n' ;;; stderr: b'9.22\n'
+stdout: b'511.0000000000001\n' ;;; stderr: b'9.23\n'
+stdout: b'511.0000000000001\n' ;;; stderr: b'9.11\n'
+stdout: b'511.0000000000001\n' ;;; stderr: b'9.21\n'
+Running n=10
+stdout: b'1023.0000000000001\n' ;;; stderr: b'9.56\n'
+stdout: b'1023.0000000000001\n' ;;; stderr: b'9.64\n'
+stdout: b'1023.0000000000001\n' ;;; stderr: b'9.62\n'
+stdout: b'1023.0000000000001\n' ;;; stderr: b'9.57\n'
+stdout: b'1023.0000000000001\n' ;;; stderr: b'9.47\n'
+Running n=11
+stdout: b'2047.0000000000005\n' ;;; stderr: b'11.15\n'
+stdout: b'2047.0000000000005\n' ;;; stderr: b'11.65\n'
+stdout: b'2047.0000000000005\n' ;;; stderr: b'11.44\n'
+stdout: b'2047.0000000000005\n' ;;; stderr: b'11.70\n'
+stdout: b'2047.0000000000005\n' ;;; stderr: b'11.64\n'
+Running n=12
+stdout: b'4095.000000000001\n' ;;; stderr: b'18.94\n'
+stdout: b'4095.000000000001\n' ;;; stderr: b'19.79\n'
+stdout: b'4095.000000000001\n' ;;; stderr: b'18.14\n'
+stdout: b'4095.000000000001\n' ;;; stderr: b'18.29\n'
+stdout: b'4095.000000000001\n' ;;; stderr: b'17.66\n'
+Running n=13
+stdout: b'8191.000000000002\n' ;;; stderr: b'60.26\n'
+stdout: b'8191.000000000002\n' ;;; stderr: b'59.04\n'
+stdout: b'8191.000000000002\n' ;;; stderr: b'58.14\n'
+stdout: b'8191.000000000002\n' ;;; stderr: b'56.72\n'
+stdout: b'8191.000000000002\n' ;;; stderr: b'58.77\n'
+Running n=14
+stdout: b'16383.000000000004\n' ;;; stderr: b'351.65\n'

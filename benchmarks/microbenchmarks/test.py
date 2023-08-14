@@ -8,7 +8,7 @@ OOPSLA_CMD_FORMAT = ["../Dice.native", "{instance_path}"]
 DICE_CMD_FORMAT = ["../newdice/_build/default/bin/dice.exe", "-eager-eval", "{instance_path}"]
 DICE_COMMENT_FORMAT = "// %s"
 
-JULIA_CMD_FORMAT = ["julia", "--project", "{instance_path}", "{num_bits}"]
+JULIA_CMD_FORMAT = ["julia", "--project=../..", "{instance_path}", "{num_bits}"]
 JULIA_COMMENT_FORMAT = "# %s"
 
 TEST_TEMPLATES = [
@@ -19,8 +19,9 @@ TEST_TEMPLATES = [
     # ("pyro_template.py", PYTHON_CMD_FORMAT, PYTHON_COMMENT_FORMAT),
     # ("oopsla_template.dice", OOPSLA_CMD_FORMAT, DICE_COMMENT_FORMAT),
     # ("uniform.dice", DICE_CMD_FORMAT, DICE_COMMENT_FORMAT),
-    ("dice.dice", DICE_CMD_FORMAT, DICE_COMMENT_FORMAT),
-    # ("bwh.jl", JULIA_CMD_FORMAT, JULIA_COMMENT_FORMAT),
+    # ("dice.dice", DICE_CMD_FORMAT, DICE_COMMENT_FORMAT),
+    ("bt.jl", JULIA_CMD_FORMAT, JULIA_COMMENT_FORMAT),
+    ("bwh.jl", JULIA_CMD_FORMAT, JULIA_COMMENT_FORMAT),
     # ("sbk.jl", JULIA_CMD_FORMAT, JULIA_COMMENT_FORMAT),
     # ("interleaved.jl", JULIA_CMD_FORMAT, JULIA_COMMENT_FORMAT),
     # ("uniform.jl", JULIA_CMD_FORMAT, JULIA_COMMENT_FORMAT),
@@ -29,10 +30,11 @@ TEST_TEMPLATES = [
 
 TESTS = [
     # "less",
-    # "equals",
-    "sum",
+    "equals",
+    # "sum",
 ]
-NS = list(range(1, 101))
+# NS = list(range(1, 101))
+NS = list(range(5, 15))
 TIMEOUT = 60 * 60 * 2
 REPETITIONS = 5  # take median of these
 
@@ -97,6 +99,7 @@ def time_cmd(cmd, timeout, repetitions):
                 timeout=timeout,
             )
             flprint(f"stdout: {completed.stdout} ;;; stderr: {completed.stderr}")
+            # flprint(f"stdout: {completed.stdout} ;;; stderr: {completed.stderr} ;;; `{cmd}`")
 
             if completed.returncode == 137:
                 flprint("Out of memory; got return code 137. Treating as timeout")
@@ -121,7 +124,9 @@ for test in TESTS:
         for num_bits in NS:
             instance_path = os.path.join(BUILD_DIR, f"{timestamp}_{test}_{num_bits}b_{template_path}")
             instantiate_template(template_path, test, instance_path, comment_format, num_bits)
-            cmd = ["time", "-f", "%e"]
+            # cmd = ["time", "-f", "%e"]
+            # cmd = ["time"]
+            cmd = ["gtime", "-f", "%e"]
             cmd.extend(
                 segment.format(num_bits=num_bits, instance_path=instance_path)
                 for segment in cmd_format

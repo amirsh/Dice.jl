@@ -1,0 +1,123 @@
+=== Performing test "equals" ===
+Template bt.jl
+Running n=5
+stdout: b'[0.96875, 0.03125]\n' ;;; stderr: b'0.66\n'
+stdout: b'[0.96875, 0.03125]\n' ;;; stderr: b'0.60\n'
+stdout: b'[0.96875, 0.03125]\n' ;;; stderr: b'0.53\n'
+stdout: b'[0.96875, 0.03125]\n' ;;; stderr: b'0.57\n'
+stdout: b'[0.96875, 0.03125]\n' ;;; stderr: b'0.60\n'
+Running n=6
+stdout: b'[0.984375, 0.015625]\n' ;;; stderr: b'0.56\n'
+stdout: b'[0.984375, 0.015625]\n' ;;; stderr: b'0.56\n'
+stdout: b'[0.984375, 0.015625]\n' ;;; stderr: b'0.52\n'
+stdout: b'[0.984375, 0.015625]\n' ;;; stderr: b'0.60\n'
+stdout: b'[0.984375, 0.015625]\n' ;;; stderr: b'0.52\n'
+Running n=7
+stdout: b'[0.9921875, 0.0078125]\n' ;;; stderr: b'0.54\n'
+stdout: b'[0.9921875, 0.0078125]\n' ;;; stderr: b'0.52\n'
+stdout: b'[0.9921875, 0.0078125]\n' ;;; stderr: b'0.63\n'
+stdout: b'[0.9921875, 0.0078125]\n' ;;; stderr: b'0.54\n'
+stdout: b'[0.9921875, 0.0078125]\n' ;;; stderr: b'0.52\n'
+Running n=8
+stdout: b'[0.99609375, 0.00390625]\n' ;;; stderr: b'0.57\n'
+stdout: b'[0.99609375, 0.00390625]\n' ;;; stderr: b'0.56\n'
+stdout: b'[0.99609375, 0.00390625]\n' ;;; stderr: b'0.61\n'
+stdout: b'[0.99609375, 0.00390625]\n' ;;; stderr: b'0.54\n'
+stdout: b'[0.99609375, 0.00390625]\n' ;;; stderr: b'0.54\n'
+Running n=9
+stdout: b'[0.998046875, 0.001953125]\n' ;;; stderr: b'0.59\n'
+stdout: b'[0.998046875, 0.001953125]\n' ;;; stderr: b'0.77\n'
+stdout: b'[0.998046875, 0.001953125]\n' ;;; stderr: b'0.58\n'
+stdout: b'[0.998046875, 0.001953125]\n' ;;; stderr: b'0.58\n'
+stdout: b'[0.998046875, 0.001953125]\n' ;;; stderr: b'0.59\n'
+Running n=10
+stdout: b'[0.9990234375, 0.0009765625]\n' ;;; stderr: b'0.82\n'
+stdout: b'[0.9990234375, 0.0009765625]\n' ;;; stderr: b'0.76\n'
+stdout: b'[0.9990234375, 0.0009765625]\n' ;;; stderr: b'0.73\n'
+stdout: b'[0.9990234375, 0.0009765625]\n' ;;; stderr: b'0.82\n'
+stdout: b'[0.9990234375, 0.0009765625]\n' ;;; stderr: b'0.74\n'
+Running n=11
+stdout: b'[0.99951171875, 0.00048828125]\n' ;;; stderr: b'1.39\n'
+stdout: b'[0.99951171875, 0.00048828125]\n' ;;; stderr: b'1.58\n'
+stdout: b'[0.99951171875, 0.00048828125]\n' ;;; stderr: b'1.35\n'
+stdout: b'[0.99951171875, 0.00048828125]\n' ;;; stderr: b'1.26\n'
+stdout: b'[0.99951171875, 0.00048828125]\n' ;;; stderr: b'1.32\n'
+Running n=12
+stdout: b'[0.999755859375, 0.000244140625]\n' ;;; stderr: b'3.90\n'
+stdout: b'[0.999755859375, 0.000244140625]\n' ;;; stderr: b'3.70\n'
+stdout: b'[0.999755859375, 0.000244140625]\n' ;;; stderr: b'3.68\n'
+stdout: b'[0.999755859375, 0.000244140625]\n' ;;; stderr: b'3.57\n'
+stdout: b'[0.999755859375, 0.000244140625]\n' ;;; stderr: b'3.81\n'
+Running n=13
+stdout: b'[0.9998779296875, 0.0001220703125]\n' ;;; stderr: b'12.53\n'
+stdout: b'[0.9998779296875, 0.0001220703125]\n' ;;; stderr: b'12.49\n'
+stdout: b'[0.9998779296875, 0.0001220703125]\n' ;;; stderr: b'12.91\n'
+stdout: b'[0.9998779296875, 0.0001220703125]\n' ;;; stderr: b'13.60\n'
+stdout: b'[0.9998779296875, 0.0001220703125]\n' ;;; stderr: b'12.98\n'
+Running n=14
+stdout: b'[0.99993896484375, 6.103515625e-5]\n' ;;; stderr: b'51.66\n'
+stdout: b'[0.99993896484375, 6.103515625e-5]\n' ;;; stderr: b'50.53\n'
+stdout: b'[0.99993896484375, 6.103515625e-5]\n' ;;; stderr: b'48.64\n'
+stdout: b'[0.99993896484375, 6.103515625e-5]\n' ;;; stderr: b'50.30\n'
+stdout: b'[0.99993896484375, 6.103515625e-5]\n' ;;; stderr: b'48.83\n'
+Template bwh.jl
+Running n=5
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.96875, true => 0.031250000000000014)\n' ;;; stderr: b'10.94\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.96875, true => 0.031250000000000014)\n' ;;; stderr: b'9.83\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.96875, true => 0.031250000000000014)\n' ;;; stderr: b'10.66\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.96875, true => 0.031250000000000014)\n' ;;; stderr: b'9.53\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.96875, true => 0.031250000000000014)\n' ;;; stderr: b'10.28\n'
+Running n=6
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.984375, true => 0.015625000000000007)\n' ;;; stderr: b'10.64\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.984375, true => 0.015625000000000007)\n' ;;; stderr: b'9.55\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.984375, true => 0.015625000000000007)\n' ;;; stderr: b'9.60\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.984375, true => 0.015625000000000007)\n' ;;; stderr: b'9.66\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.984375, true => 0.015625000000000007)\n' ;;; stderr: b'9.28\n'
+Running n=7
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9921875, true => 0.007812500000000002)\n' ;;; stderr: b'9.33\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9921875, true => 0.007812500000000002)\n' ;;; stderr: b'9.65\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9921875, true => 0.007812500000000002)\n' ;;; stderr: b'9.17\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9921875, true => 0.007812500000000002)\n' ;;; stderr: b'9.50\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9921875, true => 0.007812500000000002)\n' ;;; stderr: b'9.77\n'
+Running n=8
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.99609375, true => 0.003906250000000001)\n' ;;; stderr: b'9.73\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.99609375, true => 0.003906250000000001)\n' ;;; stderr: b'9.55\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.99609375, true => 0.003906250000000001)\n' ;;; stderr: b'9.28\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.99609375, true => 0.003906250000000001)\n' ;;; stderr: b'9.21\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.99609375, true => 0.003906250000000001)\n' ;;; stderr: b'9.36\n'
+Running n=9
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9980468750000001, true => 0.001953125)\n' ;;; stderr: b'9.73\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9980468750000001, true => 0.001953125)\n' ;;; stderr: b'9.63\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9980468750000001, true => 0.001953125)\n' ;;; stderr: b'9.24\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9980468750000001, true => 0.001953125)\n' ;;; stderr: b'9.27\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9980468750000001, true => 0.001953125)\n' ;;; stderr: b'9.81\n'
+Running n=10
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9990234375, true => 0.0009765625)\n' ;;; stderr: b'9.98\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9990234375, true => 0.0009765625)\n' ;;; stderr: b'10.10\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9990234375, true => 0.0009765625)\n' ;;; stderr: b'10.43\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9990234375, true => 0.0009765625)\n' ;;; stderr: b'10.18\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9990234375, true => 0.0009765625)\n' ;;; stderr: b'10.20\n'
+Running n=11
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.99951171875, true => 0.0004882812500000004)\n' ;;; stderr: b'11.34\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.99951171875, true => 0.0004882812500000004)\n' ;;; stderr: b'11.47\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.99951171875, true => 0.0004882812500000004)\n' ;;; stderr: b'11.20\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.99951171875, true => 0.0004882812500000004)\n' ;;; stderr: b'11.34\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.99951171875, true => 0.0004882812500000004)\n' ;;; stderr: b'11.72\n'
+Running n=12
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9997558593750001, true => 0.00024414062500000016)\n' ;;; stderr: b'19.02\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9997558593750001, true => 0.00024414062500000016)\n' ;;; stderr: b'18.78\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9997558593750001, true => 0.00024414062500000016)\n' ;;; stderr: b'19.12\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9997558593750001, true => 0.00024414062500000016)\n' ;;; stderr: b'17.95\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9997558593750001, true => 0.00024414062500000016)\n' ;;; stderr: b'18.83\n'
+Running n=13
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9998779296875001, true => 0.00012207031250000008)\n' ;;; stderr: b'66.12\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9998779296875001, true => 0.00012207031250000008)\n' ;;; stderr: b'66.64\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9998779296875001, true => 0.00012207031250000008)\n' ;;; stderr: b'62.95\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9998779296875001, true => 0.00012207031250000008)\n' ;;; stderr: b'62.75\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9998779296875001, true => 0.00012207031250000008)\n' ;;; stderr: b'65.08\n'
+Running n=14
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9999389648437501, true => 6.103515625000003e-5)\n' ;;; stderr: b'280.38\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9999389648437501, true => 6.103515625000003e-5)\n' ;;; stderr: b'257.31\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9999389648437501, true => 6.103515625000003e-5)\n' ;;; stderr: b'254.74\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9999389648437501, true => 6.103515625000003e-5)\n' ;;; stderr: b'257.13\n'
+stdout: b'DataStructures.DefaultDict{Any, Any, Float64}(false => 0.9999389648437501, true => 6.103515625000003e-5)\n' ;;; stderr: b'297.23\n'

@@ -1,0 +1,62 @@
+=== Performing test "sum" ===
+Template bt.jl
+Running n=5
+stdout: b'31.0\n' ;;; stderr: b'0.55\n'
+stdout: b'31.0\n' ;;; stderr: b'0.42\n'
+stdout: b'31.0\n' ;;; stderr: b'0.44\n'
+stdout: b'31.0\n' ;;; stderr: b'0.41\n'
+stdout: b'31.0\n' ;;; stderr: b'0.40\n'
+Running n=6
+stdout: b'63.0\n' ;;; stderr: b'0.42\n'
+stdout: b'63.0\n' ;;; stderr: b'0.40\n'
+stdout: b'63.0\n' ;;; stderr: b'0.43\n'
+stdout: b'63.0\n' ;;; stderr: b'0.41\n'
+stdout: b'63.0\n' ;;; stderr: b'0.41\n'
+Running n=7
+stdout: b'127.0\n' ;;; stderr: b'0.43\n'
+stdout: b'127.0\n' ;;; stderr: b'0.41\n'
+stdout: b'127.0\n' ;;; stderr: b'0.43\n'
+stdout: b'127.0\n' ;;; stderr: b'0.41\n'
+stdout: b'127.0\n' ;;; stderr: b'0.40\n'
+Running n=8
+stdout: b'255.0\n' ;;; stderr: b'0.52\n'
+stdout: b'255.0\n' ;;; stderr: b'0.42\n'
+stdout: b'255.0\n' ;;; stderr: b'0.48\n'
+stdout: b'255.0\n' ;;; stderr: b'0.41\n'
+stdout: b'255.0\n' ;;; stderr: b'0.43\n'
+Running n=9
+stdout: b'511.0\n' ;;; stderr: b'0.50\n'
+stdout: b'511.0\n' ;;; stderr: b'0.46\n'
+stdout: b'511.0\n' ;;; stderr: b'0.48\n'
+stdout: b'511.0\n' ;;; stderr: b'0.45\n'
+stdout: b'511.0\n' ;;; stderr: b'0.47\n'
+Running n=10
+stdout: b'1023.0\n' ;;; stderr: b'0.63\n'
+stdout: b'1023.0\n' ;;; stderr: b'0.64\n'
+stdout: b'1023.0\n' ;;; stderr: b'0.60\n'
+stdout: b'1023.0\n' ;;; stderr: b'0.61\n'
+stdout: b'1023.0\n' ;;; stderr: b'0.60\n'
+Running n=11
+stdout: b'2047.0\n' ;;; stderr: b'1.22\n'
+stdout: b'2047.0\n' ;;; stderr: b'1.17\n'
+stdout: b'2047.0\n' ;;; stderr: b'1.17\n'
+stdout: b'2047.0\n' ;;; stderr: b'1.17\n'
+stdout: b'2047.0\n' ;;; stderr: b'1.15\n'
+Running n=12
+stdout: b'4095.0\n' ;;; stderr: b'3.44\n'
+stdout: b'4095.0\n' ;;; stderr: b'3.42\n'
+stdout: b'4095.0\n' ;;; stderr: b'3.40\n'
+stdout: b'4095.0\n' ;;; stderr: b'3.40\n'
+stdout: b'4095.0\n' ;;; stderr: b'3.39\n'
+Running n=13
+stdout: b'8191.0\n' ;;; stderr: b'12.55\n'
+stdout: b'8191.0\n' ;;; stderr: b'12.47\n'
+stdout: b'8191.0\n' ;;; stderr: b'12.55\n'
+stdout: b'8191.0\n' ;;; stderr: b'12.73\n'
+stdout: b'8191.0\n' ;;; stderr: b'12.50\n'
+Running n=14
+stdout: b'16383.0\n' ;;; stderr: b'48.65\n'
+stdout: b'16383.0\n' ;;; stderr: b'49.05\n'
+stdout: b'16383.0\n' ;;; stderr: b'52.93\n'
+stdout: b'16383.0\n' ;;; stderr: b'54.90\n'
+stdout: b'16383.0\n' ;;; stderr: b'48.82\n'
