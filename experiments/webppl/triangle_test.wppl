@@ -79,8 +79,8 @@ var main = function(){
   
   // return check2(a, b, c);
   // return check3_1(a, b, c);
-  return check3_2(a, b, c);
-  // return check3(a, b, c);
+  // return check3_2(a, b, c);
+  return check3(a, b, c);
   // return check4(a, b, c);
 };
 
