@@ -1,8 +1,12 @@
-
+using BenchmarkTools
 # localARGS = ARGS
 # n = parse(Int64, localARGS[1])
-n = 101
-nover2 = 52
+# n = 101
+# nover2 = 52
+n = 201
+nover2 = 102
+# n = 1001
+# nover2 = 502
 
 a = [1/n for _ in 1:n]
 b = [1/n for _ in 1:n]
@@ -81,7 +85,8 @@ less_add_or3_pr(a :: Vector{Float64}, b :: Vector{Float64}, c :: Vector{Float64}
 	for i in 1:length(a)
 		for j in 1:length(b)
 			for ic in 1:length(c)
-				for jd in 1:length(d)
+				# for jd in 1:length(d)
+					jd = nover2
 					iab = i + j - 1
 					icd = ic + jd - 1
 					iac = i + ic - 1
@@ -90,7 +95,37 @@ less_add_or3_pr(a :: Vector{Float64}, b :: Vector{Float64}, c :: Vector{Float64}
 					ibc = j + ic - 1
 					v = (iab < icd || iac < ibd || ibc < iad) ? 2 : 1
 					res[v] += a[i] * b[j] * c[ic] * d[jd]
+				# end
+			end
+		end
+	end
+	return res
+end
+
+triangle_pr(a :: Vector{Float64}, b :: Vector{Float64}, c :: Vector{Float64}) = begin
+	res = [0.0, 0.0, 0.0, 0.0]
+	for i in 1:length(a)
+		ai = a[i]
+		for j in 1:length(b)
+			bj = b[j]
+			for ic in 1:length(c)
+				jd = nover2
+				iab = i + j - 1
+				icd = ic + jd - 1
+				iac = i + ic - 1
+				ibd = j + jd - 1
+				iad = i + jd - 1
+				ibc = j + ic - 1
+				if(i < jd || j < jd || ic < jd || iab < icd || iac < ibd || ibc < iad)
+					v = 4
+				elseif(i == j && j == ic && i == ic)
+					v = 3
+				elseif(i == j || j == ic || i == ic)
+					v = 2
+				else
+					v = 1
 				end
+				res[v] += ai * bj * c[ic]
 			end
 		end
 	end
@@ -120,28 +155,41 @@ or_pr(a :: Vector{Float64}, b :: Vector{Float64}) = begin
 	return res
 end
 
-t1 = less_pr(a, half)
-t2 = less_pr(b, half)
-t3 = less_pr(c, half)
-t4 = or_pr(t1, t2)
-t5 = or_pr(t4, t3)
-println(t5)
-ab = add_pr(a, b)
-ac = add_pr(a, c)
-bc = add_pr(b, c)
-ah = add_pr(a, half)
-bh = add_pr(b, half)
-ch = add_pr(c, half)
-t11 = less_pr(ab, ch)
-t12 = less_pr(ac, bh)
-t13 = less_pr(bc, ah)
-t14 = or_pr(t11, t12)
-t15 = or_pr(t14, t13)
-t20 = or_pr(t5, t15)
-println(t11) # check3_1
-println(less_add_pr(a, b, c, half)) # check3_1
-println(t14) # check3_2 # wrong
-println(less_add_or2_pr(a, b, c, half)) # check3_2 # correct
-println(t15) # check3 # wrong
-println(less_add_or3_pr(a, b, c, half)) # check3 # correct
-println(t20)
+# t1 = less_pr(a, half)
+# t2 = less_pr(b, half)
+# t3 = less_pr(c, half)
+# t4 = or_pr(t1, t2)
+# t5 = or_pr(t4, t3)
+# println(t5)
+# ab = add_pr(a, b)
+# ac = add_pr(a, c)
+# bc = add_pr(b, c)
+# ah = add_pr(a, half)
+# bh = add_pr(b, half)
+# ch = add_pr(c, half)
+# t11 = less_pr(ab, ch)
+# t12 = less_pr(ac, bh)
+# t13 = less_pr(bc, ah)
+# t14 = or_pr(t11, t12)
+# t15 = or_pr(t14, t13)
+# t20 = or_pr(t5, t15)
+# println(t11) # check3_1
+# println(less_add_pr(a, b, c, half)) # check3_1
+# println(t14) # check3_2 # wrong
+# println(less_add_or2_pr(a, b, c, half)) # check3_2 # correct
+# println(t15) # check3 # wrong
+# println(less_add_or3_pr(a, b, c, half)) # check3 # correct
+# println(t20)
+# println(triangle_pr(a, b, c))
+
+function fun() 
+	a = [1/n for _ in 1:n]
+	b = [1/n for _ in 1:n]
+	c = [1/n for _ in 1:n]
+	return triangle_pr(a, b, c)
+end 
+
+x = @benchmark fun()
+
+println((median(x).time)/10^9)
+
