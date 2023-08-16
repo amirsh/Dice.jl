@@ -11,10 +11,6 @@ function fun()
 
         delta = tgtValue - curValue
 
-        # d = ifelse((delta < DistInt{14}(5)) & (delta > DistInt{14}(-5)), 
-        #     DistInt{14}(0), 
-        #     delta + uniform(DistInt{14}, -10, 11))
-
 
     
         d = ifelse((delta < DistInt{14}(5)) & (delta > DistInt{14}(-5)), 
@@ -42,12 +38,6 @@ function fun()
         
 
         curValue = curValue + d 
-
-        # curValue = ifelse(curValue > DistInt{14}(5), 
-        #                 DistInt{14}(5), 
-        #             ifelse(curValue < DistInt{14}(1), 
-        #                 DistInt{14}(1), 
-        #                 curValue))
 
         curValue = ifelse(curValue > DistInt{14}(500), 
                         DistInt{14}(500), 

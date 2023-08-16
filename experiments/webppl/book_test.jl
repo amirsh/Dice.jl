@@ -1,7 +1,8 @@
 using BenchmarkTools
 
 # n = 10
-n = 100
+# n = 100
+n = 500
 curValue = [1/n for _ in 1:n]
 tgtValue = [1/n for _ in 1:n]
 
@@ -58,6 +59,44 @@ sub_cmp_pr_medium(a :: Vector{Float64}, b :: Vector{Float64}) = begin
 			else
 				for di in 1:D2
 					res[v_delta+di-1] += p_delta * 1 / D2
+				end
+			end
+		end
+	end
+	return res
+end
+
+sub_cmp_pr_large(a :: Vector{Float64}, b :: Vector{Float64}) = begin
+	A = length(a)
+	M = length(b)
+	N = length(a) + length(b) - 1
+	D1 = 21
+	D2 = 41
+	D3 = 101
+	D4 = 201
+	ZERO = 600
+	res = [0.0 for _ in 1:(N + D4 - 1)]
+	for i in 1:length(a)
+		for j in 1:length(b)
+			v_delta = i - j + M
+			p_delta = a[i] * b[j]
+			if(v_delta < 5 + M && v_delta > -5 + M)
+				res[ZERO] += p_delta
+			elseif(v_delta < 25 + M && v_delta > -25 + M)
+				for di in 1:D1
+					res[v_delta+90+di-1] += p_delta * 1 / D1
+				end
+			elseif(v_delta < 50 + M && v_delta > -50 + M)
+				for di in 1:D2
+					res[v_delta+80+di-1] += p_delta * 1 / D2
+				end
+			elseif(v_delta < 100 + M && v_delta > -100 + M)
+				for di in 1:D3
+					res[v_delta+50+di-1] += p_delta * 1 / D3
+				end
+			else
+				for di in 1:D4
+					res[v_delta+di-1] += p_delta * 1 / D4
 				end
 			end
 		end
@@ -131,6 +170,58 @@ sub_cmp_add_pr_medium(a :: Vector{Float64}, b :: Vector{Float64}) = begin
 			p_d = res_d[j, di]
 			if(v_c > 50 + ZERO - 1)
 				res_c[50 + ZERO - 1] += p_d
+			elseif(v_c < 1 + ZERO - 1)
+				res_c[1 + ZERO - 1] += p_d
+			else
+				res_c[v_c] += p_d
+			end
+		end
+	end
+	return res_c
+end
+
+sub_cmp_add_pr_large(a :: Vector{Float64}, b :: Vector{Float64}) = begin
+	A = length(a)
+	M = length(b)
+	N = length(a) + length(b) - 1
+	D1 = 21
+	D2 = 41
+	D3 = 101
+	D4 = 201
+	ZERO = 600
+	res_d= [0.0 for _ in 1:(M), _ in 1:(N + D4 - 1)]
+	for i in 1:length(a)
+		for j in 1:length(b)
+			v_delta = i - j + M
+			p_delta = a[i] * b[j]
+			if(v_delta < 5 + M && v_delta > -5 + M)
+				res_d[j, ZERO] += p_delta
+			elseif(v_delta < 25 + M && v_delta > -25 + M)
+				for di in 1:D1
+					res_d[j, v_delta+90+di-1] += p_delta * 1 / D1
+				end
+			elseif(v_delta < 50 + M && v_delta > -50 + M)
+				for di in 1:D2
+					res_d[j, v_delta+80+di-1] += p_delta * 1 / D2
+				end
+			elseif(v_delta < 100 + M && v_delta > -100 + M)
+				for di in 1:D3
+					res_d[j, v_delta+50+di-1] += p_delta * 1 / D3
+				end
+			else
+				for di in 1:D4
+					res_d[j, v_delta+di-1] += p_delta * 1 / D4
+				end
+			end
+		end
+	end
+	res_c = [0.0 for _ in 1:(N + D4 - 1 + M - 1)]
+	for j in 1:length(b)
+		for di in 1:(N + D4 - 1)
+			v_c = j + di - 1
+			p_d = res_d[j, di]
+			if(v_c > 500 + ZERO - 1)
+				res_c[500 + ZERO - 1] += p_d
 			elseif(v_c < 1 + ZERO - 1)
 				res_c[1 + ZERO - 1] += p_d
 			else
@@ -290,6 +381,76 @@ sub_cmp_add_sub_pr_medium(a :: Vector{Float64}, b :: Vector{Float64}) = begin
 	return res
 end
 
+sub_cmp_add_sub_pr_large(a :: Vector{Float64}, b :: Vector{Float64}) = begin
+	A = length(a)
+	M = length(b)
+	N = length(a) + length(b) - 1
+	D1 = 21
+	D2 = 41
+	D3 = 101
+	D4 = 201
+	ZERO = 600
+	res_d= [0.0 for _ in 1:A, _ in 1:(M), _ in 1:(N + D4 - 1)]
+	for i in 1:length(a)
+		for j in 1:length(b)
+			v_delta = i - j + M
+			p_delta = a[i] * b[j]
+			if(v_delta < 5 + M && v_delta > -5 + M)
+				res_d[i, j, ZERO] += p_delta
+			elseif(v_delta < 25 + M && v_delta > -25 + M)
+				for di in 1:D1
+					res_d[i, j, v_delta+90+di-1] += p_delta * 1 / D1
+				end
+			elseif(v_delta < 50 + M && v_delta > -50 + M)
+				for di in 1:D2
+					res_d[i, j, v_delta+80+di-1] += p_delta * 1 / D2
+				end
+			elseif(v_delta < 100 + M && v_delta > -100 + M)
+				for di in 1:D3
+					res_d[i, j, v_delta+50+di-1] += p_delta * 1 / D3
+				end
+			else
+				for di in 1:D4
+					res_d[i, j, v_delta+di-1] += p_delta * 1 / D4
+				end
+			end
+		end
+	end
+	C = (N + D4 - 1 + M - 1)
+	res_c = [0.0 for _ in 1:A, _ in 1:C]
+	for i in 1:length(a)
+		for j in 1:length(b)
+			for di in 1:(N + D4 - 1)
+				v_c = j + di - 1
+				p_d = res_d[i, j, di]
+				if(v_c > 500 + ZERO - 1)
+					res_c[i, 500 + ZERO - 1] += p_d
+				elseif(v_c < 1 + ZERO - 1)
+					res_c[i, 1 + ZERO - 1] += p_d
+				else
+					res_c[i, v_c] += p_d
+				end
+			end
+		end
+	end
+	D = C + A - 1
+	res_d2 = [0.0 for _ in 1:D]
+	D_OFF = 1099
+	for i in 1:length(a)
+		for j in 1:C
+			v = i - j + C
+			res_d2[v] += res_c[i, j]
+		end
+	end
+	# return res_d2
+	res = [0.0, 0.0]
+	for i in 1:D
+		v = (i < 5 + D_OFF && i > -5 + D_OFF) ? 2 : 1
+		res[v] += res_d2[i]
+	end
+	return res
+end
+
 print_vec(v) = begin
 	# println(sort(Dict(enumerate(v))))
 	println(v)
@@ -299,10 +460,13 @@ end
 # delta = sub_pr(tgtValue, curValue)
 # d = sub_cmp_pr_small(tgtValue, curValue)
 # d = sub_cmp_pr_medium(tgtValue, curValue)
+# d = sub_cmp_pr_large(tgtValue, curValue)
 # cv = sub_cmp_add_pr_small(tgtValue, curValue)
 # cv = sub_cmp_add_pr_medium(tgtValue, curValue)
+# cv = sub_cmp_add_pr_large(tgtValue, curValue)
 # dv = sub_cmp_add_sub_pr_small(tgtValue, curValue)
 # dv = sub_cmp_add_sub_pr_medium(tgtValue, curValue)
+# dv = sub_cmp_add_sub_pr_large(tgtValue, curValue)
 
 # print_vec(delta)
 # print_vec(d)
@@ -311,12 +475,14 @@ end
 
 function fun() 
 	# n = 10
-	n = 100
-	# n = 500
+	# n = 100
+	n = 500
 	curValue = [1/n for _ in 1:n]
 	tgtValue = [1/n for _ in 1:n]
 	# return sub_cmp_add_sub_pr_small(tgtValue, curValue)
-	return sub_cmp_add_sub_pr_medium(tgtValue, curValue)
+	# return sub_cmp_add_sub_pr_medium(tgtValue, curValue)
+	return sub_cmp_add_sub_pr_large(tgtValue, curValue)
+	# return sub_cmp_add_pr_large(tgtValue, curValue)
 end 
 
 x = @benchmark fun()
