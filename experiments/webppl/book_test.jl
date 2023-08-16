@@ -451,6 +451,73 @@ sub_cmp_add_sub_pr_large(a :: Vector{Float64}, b :: Vector{Float64}) = begin
 	return res
 end
 
+sub_cmp_add_sub_pr_large_opt(a :: Vector{Float64}, b :: Vector{Float64}) = begin
+	A = length(a)
+	M = length(b)
+	N = length(a) + length(b) - 1
+	D1 = 21
+	D2 = 41
+	D3 = 101
+	D4 = 201
+	ZERO = 600
+	C = (N + D4 - 1 + M - 1)
+	res_c = [0.0 for _ in 1:A, _ in 1:C]
+	# res_d= [0.0 for _ in 1:A, _ in 1:(M), _ in 1:(N + D4 - 1)]
+	for i in 1:length(a)
+		for j in 1:length(b)
+			res_d = [0.0 for _ in 1:(N + D4 - 1)]
+			v_delta = i - j + M
+			p_delta = a[i] * b[j]
+			if(v_delta < 5 + M && v_delta > -5 + M)
+				res_d[ZERO] += p_delta
+			elseif(v_delta < 25 + M && v_delta > -25 + M)
+				for di in 1:D1
+					res_d[v_delta+90+di-1] += p_delta * 1 / D1
+				end
+			elseif(v_delta < 50 + M && v_delta > -50 + M)
+				for di in 1:D2
+					res_d[v_delta+80+di-1] += p_delta * 1 / D2
+				end
+			elseif(v_delta < 100 + M && v_delta > -100 + M)
+				for di in 1:D3
+					res_d[v_delta+50+di-1] += p_delta * 1 / D3
+				end
+			else
+				for di in 1:D4
+					res_d[v_delta+di-1] += p_delta * 1 / D4
+				end
+			end
+			for di in 1:(N + D4 - 1)
+				v_c = j + di - 1
+				p_d = res_d[di]
+				if(v_c > 500 + ZERO - 1)
+					res_c[i, 500 + ZERO - 1] += p_d
+				elseif(v_c < 1 + ZERO - 1)
+					res_c[i, 1 + ZERO - 1] += p_d
+				else
+					res_c[i, v_c] += p_d
+				end
+			end
+		end
+	end
+	D = C + A - 1
+	res_d2 = [0.0 for _ in 1:D]
+	D_OFF = 1099
+	for i in 1:length(a)
+		for j in 1:C
+			v = i - j + C
+			res_d2[v] += res_c[i, j]
+		end
+	end
+	# return res_d2
+	res = [0.0, 0.0]
+	for i in 1:D
+		v = (i < 5 + D_OFF && i > -5 + D_OFF) ? 2 : 1
+		res[v] += res_d2[i]
+	end
+	return res
+end
+
 print_vec(v) = begin
 	# println(sort(Dict(enumerate(v))))
 	println(v)
@@ -467,6 +534,7 @@ end
 # dv = sub_cmp_add_sub_pr_small(tgtValue, curValue)
 # dv = sub_cmp_add_sub_pr_medium(tgtValue, curValue)
 # dv = sub_cmp_add_sub_pr_large(tgtValue, curValue)
+# dv = sub_cmp_add_sub_pr_large_opt(tgtValue, curValue)
 
 # print_vec(delta)
 # print_vec(d)
@@ -481,7 +549,8 @@ function fun()
 	tgtValue = [1/n for _ in 1:n]
 	# return sub_cmp_add_sub_pr_small(tgtValue, curValue)
 	# return sub_cmp_add_sub_pr_medium(tgtValue, curValue)
-	return sub_cmp_add_sub_pr_large(tgtValue, curValue)
+	# return sub_cmp_add_sub_pr_large(tgtValue, curValue)
+	return sub_cmp_add_sub_pr_large_opt(tgtValue, curValue)
 	# return sub_cmp_add_pr_large(tgtValue, curValue)
 end 
 
