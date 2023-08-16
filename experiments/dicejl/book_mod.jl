@@ -2,7 +2,7 @@ using Dice
 using BenchmarkTools
 
 function fun() 
-    n = 11
+    n = 501
     c = @dice begin 
         curValue = uniform(DistInt{14}, 1, n)
         tgtValue = uniform(DistInt{14}, 1, n)
@@ -43,6 +43,12 @@ function fun()
 
         curValue = curValue + d 
 
+        # curValue = ifelse(curValue > DistInt{14}(5), 
+        #                 DistInt{14}(5), 
+        #             ifelse(curValue < DistInt{14}(1), 
+        #                 DistInt{14}(1), 
+        #                 curValue))
+
         curValue = ifelse(curValue > DistInt{14}(500), 
                         DistInt{14}(500), 
                     ifelse(curValue < DistInt{14}(1), 
@@ -53,12 +59,13 @@ function fun()
         return (delta < DistInt{14}(5)) && (delta > DistInt{14}(-5))
         # return d
         # return delta
+        # return curValue
     end 
     pr(c)
 end
 
-println(sort(fun()))
+# println(sort(fun()))
 
-# x = @benchmark fun()
+x = @benchmark fun()
 
-# println((median(x).time)/10^9)
+println((median(x).time)/10^9)

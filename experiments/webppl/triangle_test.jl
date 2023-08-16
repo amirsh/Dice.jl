@@ -80,7 +80,7 @@ less_add_or2_pr(a :: Vector{Float64}, b :: Vector{Float64}, c :: Vector{Float64}
 	return res
 end
 
-less_add_or3_pr(a :: Vector{Float64}, b :: Vector{Float64}, c :: Vector{Float64}, d :: Vector{Float64}) = begin
+less_add_or3_pr(a :: Vector{Float64}, b :: Vector{Float64}, c :: Vector{Float64}) = begin
 	res = [0.0, 0.0]
 	for i in 1:length(a)
 		for j in 1:length(b)
@@ -94,7 +94,7 @@ less_add_or3_pr(a :: Vector{Float64}, b :: Vector{Float64}, c :: Vector{Float64}
 					iad = i + jd - 1
 					ibc = j + ic - 1
 					v = (iab < icd || iac < ibd || ibc < iad) ? 2 : 1
-					res[v] += a[i] * b[j] * c[ic] * d[jd]
+					res[v] += a[i] * b[j] * c[ic]
 				# end
 			end
 		end
@@ -155,6 +155,15 @@ or_pr(a :: Vector{Float64}, b :: Vector{Float64}) = begin
 	return res
 end
 
+function triangle_first(a, b, c)
+	t1 = less_pr(a, half)
+	t2 = less_pr(b, half)
+	t3 = less_pr(c, half)
+	t4 = or_pr(t1, t2)
+	t5 = or_pr(t4, t3)
+	return t5
+end
+
 # t1 = less_pr(a, half)
 # t2 = less_pr(b, half)
 # t3 = less_pr(c, half)
@@ -178,7 +187,7 @@ end
 # println(t14) # check3_2 # wrong
 # println(less_add_or2_pr(a, b, c, half)) # check3_2 # correct
 # println(t15) # check3 # wrong
-# println(less_add_or3_pr(a, b, c, half)) # check3 # correct
+# println(less_add_or3_pr(a, b, c)) # check3 # correct
 # println(t20)
 # println(triangle_pr(a, b, c))
 
@@ -187,6 +196,8 @@ function fun()
 	b = [1/n for _ in 1:n]
 	c = [1/n for _ in 1:n]
 	return triangle_pr(a, b, c)
+	# return triangle_first(a, b, c)
+	# return less_add_or3_pr(a, b, c)
 end 
 
 x = @benchmark fun()
