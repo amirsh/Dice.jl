@@ -3,10 +3,10 @@ using BenchmarkTools
 # n = parse(Int64, localARGS[1])
 # n = 101
 # nover2 = 52
-n = 201
-nover2 = 102
-# n = 1001
-# nover2 = 502
+# n = 201
+# nover2 = 102
+n = 1001
+nover2 = 502
 
 a = [1/n for _ in 1:n]
 b = [1/n for _ in 1:n]
@@ -195,9 +195,9 @@ function fun()
 	a = [1/n for _ in 1:n]
 	b = [1/n for _ in 1:n]
 	c = [1/n for _ in 1:n]
-	return triangle_pr(a, b, c)
+	# return triangle_pr(a, b, c)
 	# return triangle_first(a, b, c)
-	# return less_add_or3_pr(a, b, c)
+	return less_add_or3_pr(a, b, c)
 end 
 
 x = @benchmark fun()
