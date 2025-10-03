@@ -101,6 +101,43 @@ less_pr_d4(a :: Vector{Float64}, b :: Vector{Float64}) = begin
 	return res
 end
 
+less_pr_opt(a :: Vector{Float64}, b :: Vector{Float64}) = begin
+	res = [0.0, 0.0]
+	for i in 1:nbpow
+		ai = a[i]
+		tmp1 = 0.0
+		for j in 1:i
+			tmp1 += b[j]
+		end
+		tmp2 = 0.0
+		for j in (i+1):nbpow
+			tmp2 += b[j]
+		end
+		res[1] += ai * tmp1
+		res[2] += ai * tmp2
+	end
+	return res
+end
+
+less_pr_opt2(a :: Vector{Float64}, b :: Vector{Float64}) = begin
+	res = [0.0, 0.0]
+	bsum = 0.0
+	tmp1 = 0.0
+	tmp2 = 0.0
+	for j = 1:nbpow
+		bsum += b[j]
+	end
+	tmp2 = bsum
+	for i in 1:nbpow
+		ai = a[i]
+		tmp1 += b[i]
+		tmp2 -= b[i]
+		res[1] += ai * tmp1
+		res[2] += ai * tmp2
+	end
+	return res
+end
+
 eq_pr(a :: Vector{Float64}, b :: Vector{Float64}) = begin
 	res = [0.0, 0.0]
 	for i in 1:nbpow
@@ -125,13 +162,17 @@ add_exp(a :: Vector{Float64}, b :: Vector{Float64}) = begin
 	return res
 end
 
-#~begin less
-println(less_pr(a, b))
-#~end
+# #~begin less
+# println(less_pr(a, b))
+# #~end
 
-#~begin less
-println(less_pr_d4(a, b))
-#~end
+# #~begin less
+# println(less_pr_d4(a, b))
+# #~end
+
+# #~begin less
+# println(less_pr_opt2(a, b))
+# #~end
 
 # #~begin equals
 # println(eq_pr(a, b))
@@ -146,4 +187,8 @@ println((median(x).time)/10^9)
 x = @benchmark less_pr_d2(a, b)
 println((median(x).time)/10^9)
 x = @benchmark less_pr_d4(a, b)
+println((median(x).time)/10^9)
+x = @benchmark less_pr_opt(a, b)
+println((median(x).time)/10^9)
+x = @benchmark less_pr_opt2(a, b)
 println((median(x).time)/10^9)
